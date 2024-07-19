@@ -47,6 +47,7 @@ public class App
         } catch (UserRequestsExitException e) {
             System.out.println("You've requested to shutdown the app.");
             System.out.println("...... shutting down the app");
+            System.exit(0);
             // add additional steps to properly shutdown the app if necessary
         } 
     
