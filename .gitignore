@@ -24,4 +24,9 @@ hs_err_pid*
 replay_pid*
 
 # VS Code folder
-/.vscode
+**/.vscode
+.vscode
+
+# Idea folder
+.idea
+**/.idea

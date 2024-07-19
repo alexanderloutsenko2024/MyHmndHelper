@@ -12,7 +12,7 @@ import org.apache.sshd.client.channel.ClientChannelEvent;
 import org.apache.sshd.client.session.ClientSession;
 import org.apache.sshd.common.channel.Channel;
 
-public class ApachMinaSshdLibUsage {
+public class ApacheMinaSshdLibUsage {
     private static String username;
     private static String password;
     private static String host;
@@ -20,7 +20,7 @@ public class ApachMinaSshdLibUsage {
     private static String command;
     private static long defaultTimeoutSeconds;
 
-    public ApachMinaSshdLibUsage (String username, String password, String host, int port, long defaultTimeoutSeconds) {
+    public ApacheMinaSshdLibUsage (String username, String password, String host, int port, long defaultTimeoutSeconds) {
         this.username = username;
         this.password = password;
         this.host     = host;

@@ -1,4 +1,4 @@
-package work.with.ssh.SSH_Connection;
+package work.with.ssh.services;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -8,11 +8,13 @@ import java.time.format.DateTimeFormatter;
 import org.json.JSONObject;
 
 import work.with.ssh.App;
+import work.with.ssh.SSH_Connection.JSchLibUsage;
 
 public class SshResponseHandler {
     private String responseString;
     public static String isNodeActive;
     public static int numOfPeers;
+    public static String nodeName;
 
     public SshResponseHandler (String response, String action) {
         this.responseString = response;
@@ -26,6 +28,17 @@ public class SshResponseHandler {
             case ("give me root folder structure"):
                 printFolderStructure();
                 break;
+            case ("give me node name"):
+                getNodeNameFromJson();
+                break;
+        }
+    }
+
+    private void getNodeNameFromJson() {
+        JSONObject jsonFileObj = new JSONObject(responseString);
+        if (jsonFileObj != null) {
+            System.out.println(jsonFileObj);
+            nodeName = jsonFileObj.getString("nodename");
         }
     }
 
@@ -88,7 +101,7 @@ public class SshResponseHandler {
 
             //if (objOfExpiresAt.opt("expires_at") != null) {
                     //System.out.println("-=     'expires_at' key has a value =-");
-                    System.out.println("-=  THE TIME FOR BIOAUTH FOR " + App.hostForWhom + " IS " + convertEpochTimeToHumanReadable(objOfExpiresAt) + "  ==--");
+                    System.out.println("-=  THE TIME FOR BIOAUTH FOR " + JSchLibUsage.nodeName + " IS " + convertEpochTimeToHumanReadable(objOfExpiresAt) + "  ==--");
                 return "Active";
 
 

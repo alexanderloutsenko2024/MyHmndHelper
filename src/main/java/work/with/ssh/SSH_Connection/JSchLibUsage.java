@@ -7,12 +7,14 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
 import work.with.ssh.App;
+import work.with.ssh.services.SshResponseHandler;
 
 public class JSchLibUsage {
     private String username;
     private String password;
     private String host;
     private int port;
+    public static String nodeName;
     private String command;
     private String responseString;
     private SshResponseHandler sshResponseHandler;
@@ -31,7 +33,6 @@ public class JSchLibUsage {
         try {
             connectSshAndExecuteCommand();
             sshResponseHandler = new SshResponseHandler(responseString, "give me root folder structure");
-            //System.out.println("--== BioAuth status is " + SshResponseHandler.isNodeActive);
         } catch (Exception e) {
             System.out.println(e);
         } 
@@ -55,14 +56,23 @@ public class JSchLibUsage {
         try {
             connectSshAndExecuteCommand();
             sshResponseHandler = new SshResponseHandler(responseString, "give me number of peers");
-            System.out.println("--== Number of peers for " + App.hostForWhom + " node is " + SshResponseHandler.numOfPeers + " ==--");
+            System.out.println("--== Number of peers for " + nodeName + " node is " + SshResponseHandler.numOfPeers + " ==--");
         } catch (Exception e) {
             System.out.println(e);
         }            
     }
 
-    public void getNumOfPeers() {
+    public void getNodeName() {
+        command = work.with.ssh.Constants.COMMAND_TO_READ_NODE_NAME;
 
+        try {
+            connectSshAndExecuteCommand();
+            sshResponseHandler = new SshResponseHandler(responseString, "give me node name");
+            nodeName = SshResponseHandler.nodeName;
+            System.out.println("--== Node name is " + nodeName + " ==--");
+        } catch (Exception e) {
+            System.out.println(e);
+        }     
     }
 
     private void connectSshAndExecuteCommand() throws Exception {

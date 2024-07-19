@@ -20,10 +20,14 @@ public class Constants {
                 "           \"method\": \"bioauth_status\",\r\n" + //
                 "           \"params\": []\r\n" + //
                 "         }'";
+    
+    public static final String COMMAND_TO_READ_NODE_NAME = "cat /root/.humanode/workspaces/default/workspace.json";
+    
     public static final String COMMAND_TO_RUN_RPC_TUMMEL = "$ ngrok-wrapper 9944";
     public static final String COMMAND_TO_RUN_NODE =
                 "humanode-peer --name \"" + nodeName + "\" --validator --chain chainspec.json \\ \r\n" + //
                 "      --rpc-url-ngrok-detect --rpc-cors all";
+
 
     // var used for Apach Mina Lib only
     protected static final long DEFAULT_TIMEOUT_SECONDS = 20;// defaultTimeoutSeconds var
