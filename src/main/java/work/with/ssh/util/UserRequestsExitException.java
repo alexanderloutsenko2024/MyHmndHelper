@@ -1,4 +1,4 @@
-package work.with.ssh.services;
+package work.with.ssh.util;
 
 public class UserRequestsExitException extends RuntimeException {
 

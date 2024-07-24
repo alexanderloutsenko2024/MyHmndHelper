@@ -7,7 +7,7 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
 import work.with.ssh.App;
-import work.with.ssh.services.SshResponseHandler;
+import work.with.ssh.SSH_Connection.ssh_helper.SshResponseHandler;
 
 public class JSchLibUsage {
     private String username;

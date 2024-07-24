@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import work.with.ssh.SSH_Connection.ApacheMinaSshdLibUsage;
 import work.with.ssh.SSH_Connection.JSchLibUsage;
-import work.with.ssh.models.User;
-import work.with.ssh.services.UserRequestsExitException;
+import work.with.ssh.api.model.User;
+import work.with.ssh.util.UserRequestsExitException;
 
 /**
  * some comments come here
@@ -25,7 +25,7 @@ public class App
     private static String pswInputted;
     private static final Scanner SCANNER_IN = new Scanner(System.in);
     private static User user;
-    private static boolean isAppRunning = true;
+    public static boolean isAppRunning = true;
 
     public static void main( String[] args )
     {    
@@ -92,10 +92,11 @@ public class App
 
     private static void startMenu() {
         // read user's initial command
-        System.out.print( "-- if you want to start/continue monitoring node status \n"
-                        + " enter Y and press ENTER key on the keyboard \n"
-                        + " but if you want to exit the App just enter EXIT and press ENTER: \n"
-                        + ">");
+        System.out.print( "----------------------------------------------------------------- \n"
+                        + "----- MENU OPTIONS ---------------------------------------------- \n"
+                        + "-- 1) if you want to start/continue monitoring node status enter Y and hit ENTER \n"
+                        + "-- 2) if you want to exit the App just enter EXIT and press ENTER: \n"
+                        + "-- (You wanna continue of exit?) >");
         userInput = SCANNER_IN.nextLine();  
 
         if (userInput.equalsIgnoreCase("exit")) {

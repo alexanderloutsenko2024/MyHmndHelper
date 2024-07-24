@@ -1,4 +1,4 @@
-package work.with.ssh.models;
+package work.with.ssh.api.model;
 
 import org.bouncycastle.crypto.generators.OpenBSDBCrypt;
 import java.security.SecureRandom;

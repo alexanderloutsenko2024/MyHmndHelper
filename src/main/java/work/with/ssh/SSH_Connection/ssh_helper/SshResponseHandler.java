@@ -1,4 +1,4 @@
-package work.with.ssh.services;
+package work.with.ssh.SSH_Connection.ssh_helper;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
