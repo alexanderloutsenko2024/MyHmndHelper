@@ -11,7 +11,7 @@ import work.with.ssh.SSH_Connection.ssh_helper.SshResponseHandler;
 
 public class JSchLibUsage {
     private String username;
-    private String password;
+    private String token;
     private String host;
     private int port;
     public static String nodeName;
@@ -20,11 +20,11 @@ public class JSchLibUsage {
     private SshResponseHandler sshResponseHandler;
 
 
-    public JSchLibUsage(String username, String password, String host, int port) {
-        this.username = username;
-        this.password = password;
+    public JSchLibUsage(String host, String token) {
+        this.username = work.with.ssh.Constants.USER_NAME;
+        this.token    = token;
         this.host     = host;
-        this.port     = port;
+        this.port     = work.with.ssh.Constants.PORT;
         //this.command  = command;
     }
     
@@ -81,7 +81,7 @@ public class JSchLibUsage {
         
         try {
             session = new JSch().getSession(username, host, port);
-            session.setPassword(password);
+            session.setPassword(token);
             session.setConfig("StrictHostKeyChecking", "no");
             session.connect();
             

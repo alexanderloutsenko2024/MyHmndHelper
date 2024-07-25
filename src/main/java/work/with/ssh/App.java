@@ -36,13 +36,13 @@ public class App
  
         //for (String hostOwner : Constants.LIST_OF_HOSTS_OWNERS ) {
             //hostForWhom = hostOwner;
-            useJSchLibToConnect();
+            //useJSchLibToConnect();
             //useApacheMinaSshdToConnect(); // this method is to use another type of SSH connection
         //}
 
         try {
             while (isAppRunning) {
-                startMenu(); 
+                //startMenu(); 
             }            
         } catch (UserRequestsExitException e) {
             System.out.println("You've requested to shutdown the app.");
@@ -53,24 +53,24 @@ public class App
     
     }
 
-    private static void useJSchLibToConnect() {
-        try {
-            JSchLibUsage jschConnection = new JSchLibUsage(
-                                                    Constants.USER_NAME, 
-                                                    pswInputted,
-                                                    hostInputted, //Constants.getHost(hostForWhom), 
-                                                    Constants.PORT
-                                                    );
+    // private static void useJSchLibToConnect() {
+    //     try {
+    //         JSchLibUsage jschConnection = new JSchLibUsage(
+    //                                                 Constants.USER_NAME, 
+    //                                                 pswInputted,
+    //                                                 hostInputted, //Constants.getHost(hostForWhom), 
+    //                                                 Constants.PORT
+    //                                                 );
 
-            jschConnection.getNodeName();
-            //jschConnection.listFolderStructure();
-            jschConnection.checkBioAuthStatus();
-            //jschConnection.getNodeLogs();
-        } catch (Exception e) {
-            //System.out.println(e.getMessage());
-            System.out.println(e);
-        }
-    }
+    //         jschConnection.getNodeName();
+    //         //jschConnection.listFolderStructure();
+    //         jschConnection.checkBioAuthStatus();
+    //         //jschConnection.getNodeLogs();
+    //     } catch (Exception e) {
+    //         //System.out.println(e.getMessage());
+    //         System.out.println(e);
+    //     }
+    // }
 
     // private static void useApacheMinaSshdToConnect() {
     //     try {
@@ -90,35 +90,35 @@ public class App
     //     }
     // }
 
-    private static void startMenu() {
-        // read user's initial command
-        System.out.print( "----------------------------------------------------------------- \n"
-                        + "----- MENU OPTIONS ---------------------------------------------- \n"
-                        + "-- 1) if you want to start/continue monitoring node status enter Y and hit ENTER \n"
-                        + "-- 2) if you want to exit the App just enter EXIT and press ENTER: \n"
-                        + "-- (You wanna continue of exit?) >");
-        userInput = SCANNER_IN.nextLine();  
+    // private static void startMenu() {
+    //     // read user's initial command
+    //     System.out.print( "----------------------------------------------------------------- \n"
+    //                     + "----- MENU OPTIONS ---------------------------------------------- \n"
+    //                     + "-- 1) if you want to start/continue monitoring node status enter Y and hit ENTER \n"
+    //                     + "-- 2) if you want to exit the App just enter EXIT and press ENTER: \n"
+    //                     + "-- (You wanna continue of exit?) >");
+    //     userInput = SCANNER_IN.nextLine();  
 
-        if (userInput.equalsIgnoreCase("exit")) {
-            throw new UserRequestsExitException();
-        } else if (userInput != null && userInput != "") {
-            // read a host IP from the console
-            System.out.print("-- ENTER HOST IP HERE: >");
-            hostInputted = SCANNER_IN.nextLine();
+    //     if (userInput.equalsIgnoreCase("exit")) {
+    //         throw new UserRequestsExitException();
+    //     } else if (userInput != null && userInput != "") {
+    //         // read a host IP from the console
+    //         System.out.print("-- ENTER HOST IP HERE: >");
+    //         hostInputted = SCANNER_IN.nextLine();
 
-            // read a user's password from the console
-            System.out.print("-- ENTER PASSWORD HERE: >");
-            user = new User(SCANNER_IN.nextLine());
-            pswInputted = user.getPassword(); 
+    //         // read a user's password from the console
+    //         System.out.print("-- ENTER PASSWORD HERE: >");
+    //         user = new User(SCANNER_IN.nextLine());
+    //         pswInputted = user.getPassword(); 
 
-            // execute a command requested by user
-            useJSchLibToConnect();
-            //useApacheMinaSshdToConnect(); // this method is to use another type of SSH connection
+    //         // execute a command requested by user
+    //         useJSchLibToConnect();
+    //         //useApacheMinaSshdToConnect(); // this method is to use another type of SSH connection
     
-        } else if (userInput == null) {
-            System.out.println("-- Please enter a Y to continue or EXIT to exit the App --");
-            startMenu(); 
-        }
-        System.out.println("");
-    }
+    //     } else if (userInput == null) {
+    //         System.out.println("-- Please enter a Y to continue or EXIT to exit the App --");
+    //         startMenu(); 
+    //     }
+    //     System.out.println("");
+    // }
 }

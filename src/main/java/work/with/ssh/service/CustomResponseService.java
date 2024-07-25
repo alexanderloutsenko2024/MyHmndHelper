@@ -6,38 +6,52 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import work.with.ssh.SSH_Connection.JSchLibUsage;
+import work.with.ssh.SSH_Connection.ssh_helper.SshResponseHandler;
 import work.with.ssh.api.model.CustomResponse;
 
 @Service
 public class CustomResponseService {
 // this class is supposed to return the custom response with all expected data related to the HMND node
-    
-    private List<CustomResponse> listOfData; 
+    private String host;
+    private String token;
+    private CustomResponse customResponse;
 
-    public CustomResponseService() {
-        listOfData = new ArrayList<>();
+    public CustomResponse getCustomService(String host, String token) {
 
-        CustomResponse resp1 = new CustomResponse("45.131.182.137", "___Natalka_Lu___", "Active", "till next Wed", 10);
-        CustomResponse resp2 = new CustomResponse("185.244.218.254", "___Sasha_Lu___", "Active", "till next Tue", 145);
-    
-        listOfData.addAll(Arrays.asList(resp1, resp2));
-        System.out.println(" *** ALOU DEBUG *** print listOfData array content: " + listOfData.get(0).getHost());
+        this.host = host;
+        this.token = token;
+
+        useJSchLibToConnect();
+        
+        return customResponse;
     }
 
-    public CustomResponse getCustomService(String host) {
-        for (CustomResponse data : listOfData) {
-            System.out.println(" - CustomResponse object content is " + data.getHost());
-            if (host.equalsIgnoreCase(data.getHost())) {
-                System.out.println(" --== got the host ==-- ");
-                return data;
-            } else {
-                System.out.println(" - no data to show - ");
-                return new CustomResponse("alou-localhost", "some", "next", "nothing", 5);
-            }
+    private void useJSchLibToConnect() {
+        try {
+            JSchLibUsage jschConnection = new JSchLibUsage(host, token);
 
+            customResponse = new CustomResponse();
+                // set host
+                customResponse.setHost(host);      
+                // set and get a node name
+                jschConnection.getNodeName();                              
+                customResponse.setNodeName(SshResponseHandler.nodeName);
+                // get number of connected peers from the node logs (the node even may be down)
+                jschConnection.getNodeLogs();
+                // set and get bio auth status
+                jschConnection.checkBioAuthStatus();
+                customResponse.setBioStatus(SshResponseHandler.isNodeActive);
+                // get the date of next bio authentication
+                customResponse.setDateOfNextBioAuth(SshResponseHandler.dateOfNextBioAuth);
+                // get the time remaining till the next bio authentication
+                customResponse.setRemainingTimeToNextBioAuth(SshResponseHandler.remainingTimeToNextBioAuth);
+                // set number of peers connected to the node
+                customResponse.setNumOfPeers(SshResponseHandler.numOfPeers);
+        } catch (Exception e) {
+            //System.out.println(e.getMessage());
+            System.out.println(e);
         }
-        
-        return null;
     }
     
 }

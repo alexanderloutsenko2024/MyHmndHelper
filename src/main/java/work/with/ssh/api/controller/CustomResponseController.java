@@ -21,6 +21,6 @@ public class CustomResponseController {
     @GetMapping("/get-data")
     public CustomResponse getCustomResponse(@RequestParam String host, @RequestParam String token) {
         System.out.println(" ** inside of controller ** - host received from URL is " + host);
-        return service.getCustomService(host);
+        return service.getCustomService(host, token);
     }
 }

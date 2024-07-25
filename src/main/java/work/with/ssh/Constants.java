@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Constants {
-    protected static final String USER_NAME = "root";
-    protected static final int PORT = 22;
+    public static final String USER_NAME = "root";
+    public static final int PORT = 22;
     protected static String nodeName;
     public static final List<String> LIST_OF_HOSTS_OWNERS = Arrays.asList("Sasha","Natalka", "Varvara", "Lada");
     // commands
