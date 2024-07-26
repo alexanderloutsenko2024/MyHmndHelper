@@ -146,20 +146,12 @@ public class SshResponseHandler {
         long difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
         long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
 
-        System.out.println(
-            difference_In_Days
-            + " days, "
-            + difference_In_Hours
-            + " hours, "
-            + difference_In_Minutes
-            + " minutes, "
-            + difference_In_Seconds
-            + " seconds");
-
         remainingTimeToNextBioAuth = difference_In_Days + " days, "
                                         + difference_In_Hours + " hours, "
                                         + difference_In_Minutes + " minutes, "
                                         + difference_In_Seconds + " seconds";
+        
+            System.out.println(remainingTimeToNextBioAuth);
         return remainingTimeToNextBioAuth;
     }
 

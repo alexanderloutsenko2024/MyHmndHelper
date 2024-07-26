@@ -5,7 +5,6 @@ public class CustomResponse {
     private String token;
     private String nodeName;
     private String bioAuthStatus;
-    //private String bioAuthStatusDetails;
     private String dateOfNextBioAuth;
     private String remainingTimeToNextBioAuth;
     private int numOfPeers;
@@ -17,7 +16,6 @@ public class CustomResponse {
         //this.token = inputtedToken;
         this.nodeName = node;
         this.bioAuthStatus = status;
-        //this.bioAuthStatusDetails = details;
         this.numOfPeers = peers;
     }
 
@@ -52,15 +50,6 @@ public class CustomResponse {
     public void setBioStatus(String input) {
         this.bioAuthStatus = input;
     }
-
-    // bio status details method
-    // public String getBioStatusDetails() {
-    //     return bioAuthStatusDetails;
-    // }
-
-    // public void setBioStatusDetails(String input) {
-    //     this.nodeName = input;
-    // }
 
     // num of peers methods
     public int getPeers() {

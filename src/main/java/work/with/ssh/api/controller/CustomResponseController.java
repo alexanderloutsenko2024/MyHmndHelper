@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import work.with.ssh.api.model.CustomResponse;
 import work.with.ssh.service.CustomResponseService;
 
+/*
+ * based on example found in https://www.youtube.com/watch?v=Zo9xQzibp4Y video
+ */
 @RestController
 public class CustomResponseController {
     

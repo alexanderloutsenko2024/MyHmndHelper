@@ -1,9 +1,5 @@
 package work.with.ssh.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import work.with.ssh.SSH_Connection.JSchLibUsage;
@@ -18,7 +14,6 @@ public class CustomResponseService {
     private CustomResponse customResponse;
 
     public CustomResponse getCustomService(String host, String token) {
-
         this.host = host;
         this.token = token;
 
