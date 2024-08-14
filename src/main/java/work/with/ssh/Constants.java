@@ -32,15 +32,17 @@ public class Constants {
     // var used for Apach Mina Lib only
     protected static final long DEFAULT_TIMEOUT_SECONDS = 20;// defaultTimeoutSeconds var
     //hosts
-    protected static final String HOST_SASHA   = "185.244.218.254";
-    protected static final String HOST_NATALKA = "45.131.182.137";
-    protected static final String HOST_VARVARA = "91.198.166.68";
+    protected static final String HOST_NATALKA = "178.159.43.120";
     protected static final String HOST_LADA    = "185.253.7.48";
+    protected static final String HOST_SASHA   = "45.88.76.36";
+    protected static final String HOST_VARVARA = "185.253.7.232";
+
     //node names
-    protected static final String SASHA   = "___Sasha_Lu___";
-    protected static final String NATALKA = "___Natalka_Lu___";
-    protected static final String VARVARA = "___Varvara_Lu___";
-    protected static final String LADA    = "___Lada_Lu___";
+    protected static final String LADA    = "0___Lada_Lu___";
+    protected static final String NATALKA = "0___Natalka_Lu___";
+    protected static final String SASHA   = "0___Sasha_Lu___";
+    protected static final String VARVARA = "0___Varvara_Lu___";
+
         
 
     public static String getHost(String host) {
