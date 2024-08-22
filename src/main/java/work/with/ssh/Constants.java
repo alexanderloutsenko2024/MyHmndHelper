@@ -1,5 +1,6 @@
 package work.with.ssh;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,18 +33,16 @@ public class Constants {
     // var used for Apach Mina Lib only
     protected static final long DEFAULT_TIMEOUT_SECONDS = 20;// defaultTimeoutSeconds var
     //hosts
-    protected static final String HOST_NATALKA = "178.159.43.120";
+    protected static final String HOST_NATALKA = "185.253.7.160";
     protected static final String HOST_LADA    = "185.253.7.48";
-    protected static final String HOST_SASHA   = "45.88.76.36";
-    protected static final String HOST_VARVARA = "185.253.7.232";
+    protected static final String HOST_SASHA   = "185.253.7.163";
+    protected static final String HOST_VARVARA = "185.253.7.138";
 
     //node names
     protected static final String LADA    = "0___Lada_Lu___";
     protected static final String NATALKA = "0___Natalka_Lu___";
     protected static final String SASHA   = "0___Sasha_Lu___";
-    protected static final String VARVARA = "0___Varvara_Lu___";
-
-        
+    protected static final String VARVARA = "0___Varvara_Lu___";        
 
     public static String getHost(String host) {
         String hostToReturn = "";
@@ -64,9 +63,17 @@ public class Constants {
             case "Lada":
                 hostToReturn = HOST_LADA;
                 nodeName = LADA;
-                break;
+                break;            
         }
 
         return hostToReturn;
+    }
+
+    // public static String[] getListOfNodes() {
+    //     return new String[] {HOST_LADA, HOST_NATALKA, HOST_SASHA, HOST_VARVARA};
+    // }
+
+    public static List<String> getListOfNodes() {
+        return Arrays.asList(HOST_LADA, HOST_NATALKA, HOST_SASHA, HOST_VARVARA);
     }
 }

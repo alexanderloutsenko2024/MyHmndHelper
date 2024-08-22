@@ -2,7 +2,6 @@ package work.with.ssh.SSH_Connection.ssh_helper;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.Period;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -10,7 +9,6 @@ import java.time.temporal.ChronoUnit;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import work.with.ssh.App;
 import work.with.ssh.SSH_Connection.JSchLibUsage;
 
 public class SshResponseHandler {
@@ -116,15 +114,12 @@ public class SshResponseHandler {
                     JSONObject objOfExpiresAt = objOfActiveKey.getJSONObject("Active");
                         //System.out.println("-=   'expires_at' json obj: " + objOfExpiresAt);
 
-                //if (objOfExpiresAt.opt("expires_at") != null) {
-                        //System.out.println("-=     'expires_at' key has a value =-");
-                    
                     dateOfNextBioAuth = convertEpochTimeToHumanReadable(objOfExpiresAt);
                         System.out.println("-=  THE TIME FOR BIOAUTH FOR " + JSchLibUsage.nodeName + " IS " + dateOfNextBioAuth + "  ==--");
                     
                     remainingTimeToNextBioAuth = getRemainingTime(dateOfNextBioAuth);
                     return "Active";
-                //}    
+                    
                 }                  //System.out.println("-= the whole json obj: " + jsonObj);
 
             } catch (JSONException e) {

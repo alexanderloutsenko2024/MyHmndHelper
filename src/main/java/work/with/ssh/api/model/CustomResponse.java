@@ -1,5 +1,10 @@
 package work.with.ssh.api.model;
 
+import java.time.LocalDateTime;
+
+/**
+ * This class composes the the content of the webservice response
+ */
 public class CustomResponse {
     private String host;
     private String token;
@@ -8,6 +13,7 @@ public class CustomResponse {
     private String dateOfNextBioAuth;
     private String remainingTimeToNextBioAuth;
     private int numOfPeers;
+    private LocalDateTime timestamp;
 
     public CustomResponse() {}
     
@@ -76,5 +82,13 @@ public class CustomResponse {
 
     public void setRemainingTimeToNextBioAuth(String input) {
         this.remainingTimeToNextBioAuth = input;
+    }
+
+    public void setCurrentDateTime() {
+        timestamp = LocalDateTime.now();
+    }
+
+    public LocalDateTime getCurrentDateTime() {
+        return timestamp;
     }
 }
